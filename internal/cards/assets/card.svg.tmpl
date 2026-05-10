@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="200" viewBox="0 0 520 200" role="img" aria-label="Merge card for {{.Author}}">
+  <defs>
+    <!-- Purple-to-dark gradient background -->
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"   stop-color="#6e40c9"/>
+      <stop offset="100%" stop-color="#1a1028"/>
+    </linearGradient>
+    <!-- Subtle inner glow on the card border -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="round"><rect width="520" height="200" rx="16" ry="16"/></clipPath>
+  </defs>
+
+  <!-- Card background -->
+  <rect width="520" height="200" rx="16" ry="16" fill="url(#bg)"/>
+
+  <!-- Decorative merge-arrow icon (top-left accent) -->
+  <g transform="translate(28, 28)" fill="none" stroke="#c084fc" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)">
+    <!-- Vertical branch line -->
+    <line x1="6"  y1="3"  x2="6"  y2="21"/>
+    <!-- Merge dot -->
+    <circle cx="6"  cy="3"  r="3" fill="#c084fc"/>
+    <circle cx="6"  cy="21" r="3" fill="#c084fc"/>
+    <!-- Feature branch arc -->
+    <circle cx="18" cy="9"  r="3" fill="#c084fc"/>
+    <path d="M6 6 Q6 9 9 9 H15"/>
+    <path d="M18 12 Q18 15 15 18 H9 Q6 18 6 18"/>
+  </g>
+
+  <!-- "Merged!" badge -->
+  <rect x="28" y="108" width="76" height="22" rx="11" fill="#7c3aed" opacity="0.85"/>
+  <text x="66" y="123" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" font-weight="600" fill="#e9d5ff" text-anchor="middle">✓ Merged!</text>
+
+  <!-- PR title (truncated via SVG textLength / clip) -->
+  <text x="68" y="76"
+        font-family="ui-sans-serif,system-ui,-apple-system,sans-serif"
+        font-size="18" font-weight="700" fill="#f3e8ff"
+        clip-path="url(#round)">
+    {{.Title}}
+  </text>
+
+  <!-- PR number -->
+  <text x="68" y="98"
+        font-family="ui-monospace,SFMono-Regular,Menlo,monospace"
+        font-size="13" fill="#a78bfa">
+    #{{.Number}}
+  </text>
+
+  <!-- Contributor label -->
+  <text x="68" y="143"
+        font-family="ui-sans-serif,system-ui,-apple-system,sans-serif"
+        font-size="12" fill="#c4b5fd" opacity="0.85">
+    Contributed by
+  </text>
+  <text x="68" y="162"
+        font-family="ui-monospace,SFMono-Regular,Menlo,monospace"
+        font-size="15" font-weight="700" fill="#e9d5ff">
+    @{{.Author}}
+  </text>
+
+  <!-- Bottom-right: repo name -->
+  <text x="496" y="185"
+        font-family="ui-monospace,SFMono-Regular,Menlo,monospace"
+        font-size="11" fill="#7c3aed" text-anchor="end" opacity="0.7">
+    {{.Repo}}
+  </text>
+</svg>
