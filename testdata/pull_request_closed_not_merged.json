@@ -1,0 +1,15 @@
+{
+  "action": "closed",
+  "number": 13,
+  "pull_request": {
+    "number": 13,
+    "title": "chore: experiment",
+    "merged": false,
+    "user": {
+      "login": "contributor"
+    }
+  },
+  "repository": {
+    "full_name": "octocat/hello-world"
+  }
+}

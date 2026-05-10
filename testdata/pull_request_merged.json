@@ -1,0 +1,15 @@
+{
+  "action": "closed",
+  "number": 42,
+  "pull_request": {
+    "number": 42,
+    "title": "feat: add merge card generation",
+    "merged": true,
+    "user": {
+      "login": "octocat"
+    }
+  },
+  "repository": {
+    "full_name": "octocat/hello-world"
+  }
+}
