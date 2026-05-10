@@ -1,0 +1,24 @@
+# Manual smoke-test of the action itself using act (https://github.com/nektos/act).
+#
+# Run locally with:
+#   act workflow_dispatch -W .github/workflows/test.yml \
+#     --secret GITHUB_TOKEN=<your-token> \
+#     --eventpath testdata/pull_request_merged.json
+#
+# This workflow is intentionally triggered only via workflow_dispatch so it
+# does not run automatically on every push (the CI workflow handles that).
+name: action smoke-test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run merge-card action
+        uses: ./
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
