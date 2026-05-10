@@ -1,0 +1,18 @@
+name: merge-card
+description: >
+  Generates an SVG reward card and posts it as a pull request comment
+  whenever a pull request is successfully merged.
+
+inputs:
+  github_token:
+    description: >
+      GitHub token used to post the comment. Use secrets.GITHUB_TOKEN or a
+      PAT with write:discussion and pull-requests:write scopes.
+    required: true
+
+runs:
+  using: docker
+  image: Dockerfile
+  env:
+    # Expose the token so the container can authenticate to the GitHub API.
+    GITHUB_TOKEN: ${{ inputs.github_token }}
